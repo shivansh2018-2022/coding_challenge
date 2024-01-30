@@ -3,14 +3,15 @@ import React from 'react';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Dashboard from './dashboard/Dashboard';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import store from '../src/Services/store'; 
 
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Dashboard />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );
 
