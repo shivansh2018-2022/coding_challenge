@@ -1,4 +1,4 @@
-// reducer.js
+// authReducer.js
 import { AUTHENTICATE_USER } from '../Actions/actions';
 
 const initialState = {

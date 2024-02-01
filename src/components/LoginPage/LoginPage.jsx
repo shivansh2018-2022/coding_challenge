@@ -1,7 +1,6 @@
-// LoginPage.js
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { authenticateUser } from '../../Services/Actions/actions'; // Create this action
+import { authenticateUser } from '../../Services/Actions/actions';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
@@ -11,8 +10,7 @@ const LoginPage = () => {
   const handleLogin = async () => {
     try {
       // Make an API request to send username and password
-      const response = await fetch('https://tl4zomomo1.execute-api.ap-southeast-2.amazonaws.com/dev1/case-study-login'
-      , {
+      const response = await fetch('https://tl4zomomo1.execute-api.ap-southeast-2.amazonaws.com/dev1/case-study-login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -22,17 +20,19 @@ const LoginPage = () => {
 
       if (response.ok) {
         const data = await response.json();
-        
+
         // Update Redux state with authentication data
         dispatch(authenticateUser(data.authorizationCode, username));
-        
+
         // Redirect to a protected route (e.g., dashboard)
         // You may use a library like react-router for routing.
       } else {
         // Handle login error (e.g., show an error message)
+        console.error('Login failed');
       }
     } catch (error) {
       // Handle network or other errors
+      console.error('Error:', error);
     }
   };
 
