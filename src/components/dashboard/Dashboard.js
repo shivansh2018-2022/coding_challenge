@@ -17,10 +17,14 @@ import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { mainListItems, secondaryListItems } from './listItems';
+import YourComponent from './listItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import {SecondaryListItems} from './secondarylistitems';
+import { useSelector } from 'react-redux'; // Import useSelector to get the selected view from Redux
+// import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+import ReportPage from '../report/report';
 
 function Copyright(props) {
   return (
@@ -89,6 +93,7 @@ export default function Dashboard() {
   const toggleDrawer = () => {
     setOpen(!open);
   };
+  const selectedView = useSelector((state) => state.auth.selectedView); // Get the selected view from Redux
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -119,7 +124,7 @@ export default function Dashboard() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Dashboard
+              {selectedView} {/* Display the selected view from Redux */}
             </Typography>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
@@ -143,9 +148,9 @@ export default function Dashboard() {
           </Toolbar>
           <Divider />
           <List component="nav">
-            {mainListItems}
+            <YourComponent />
             <Divider sx={{ my: 1 }} />
-            {secondaryListItems}
+            {SecondaryListItems}
           </List>
         </Drawer>
         <Box
@@ -161,6 +166,10 @@ export default function Dashboard() {
           }}
         >
           <Toolbar />
+          {/* Use conditional rendering based on selectedView */}
+          {selectedView === 'Reports' ? (
+            <ReportPage />
+          ) : (
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
               {/* Chart */}
@@ -198,6 +207,7 @@ export default function Dashboard() {
             </Grid>
             <Copyright sx={{ pt: 4 }} />
           </Container>
+          )}
         </Box>
       </Box>
     </ThemeProvider>

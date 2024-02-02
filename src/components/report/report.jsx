@@ -34,9 +34,7 @@ const ReportPage = () => {
 
   return (
     <div>
-      <Typography variant="h4" gutterBottom>
-        Report Page
-      </Typography>
+      
       <Paper elevation={3} style={{ padding: '16px', width: '100%', height: '400px' }}>
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={chartData}>

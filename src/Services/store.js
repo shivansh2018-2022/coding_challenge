@@ -4,9 +4,16 @@ import authReducer from './Reducers/reducer';
 
 const store = configureStore({
   reducer: {
-    auth: authReducer, // Add more reducers if needed
+    auth: authReducer,
+     // Add more reducers if needed
   },
   // Add middleware and other configuration options if needed
 });
 
 export default store;
+
+
+
+
+
+
