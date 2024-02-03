@@ -5,7 +5,7 @@ const initialState = {
   isAuthenticated: false,
   authorizationCode: null,
   username: null,
-  selectedView: 'dashboard',
+  selectedView: 'Dashboard',
 };
 
 const authReducer = (state = initialState, action) => {
@@ -26,6 +26,8 @@ const authReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+
 
 
 

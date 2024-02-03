@@ -9,66 +9,71 @@ import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
 import AssignmentIcon from '@mui/icons-material/Assignment';
-import { useDispatch, useSelector } from 'react-redux'; // Import useDispatch and useSelector
+import { useDispatch, useSelector } from 'react-redux'; 
 import { selectView } from '../../Services/Actions/actions';
+import { tabvalues } from '../../constants';
+
+
+//change reducer.js
+//reconcilation + diffing + hooks + dependence array + usecallback + redux + JWT authentication
+
 
 const YourComponent = () => {
   const dispatch = useDispatch();
-  const selectedView = useSelector((state) => state.auth.selectedView); // Get the selected view from Redux
-  const [selectedButton, setSelectedButton] = useState('Dashboard');
+  const [selectedButton, setSelectedButton] = useState(tabvalues.dashboard);
 
-  const handleButtonClick = (buttonName) => {
-    setSelectedButton(buttonName);
-    dispatch(selectView(buttonName));
+  const handleButtonClick = (selectedTab) => {
+    setSelectedButton(selectedTab);
+    dispatch(selectView(selectedTab));
   };
 
   return (
     <div>
       <List>
         <ListItemButton
-          selected={selectedButton === 'Dashboard'} // Apply selected styling if 'Dashboard' is selected
-          onClick={() => handleButtonClick('Dashboard')}
+          selected={selectedButton === tabvalues.dashboard} 
+          onClick={() => handleButtonClick(tabvalues.dashboard)}
         >
           <ListItemIcon>
             <DashboardIcon />
           </ListItemIcon>
-          <ListItemText primary="Dashboard" />
+          <ListItemText primary={tabvalues.dashboard} />
         </ListItemButton>
         <ListItemButton
-          selected={selectedButton === 'Orders'} // Apply selected styling if 'Orders' is selected
-          onClick={() => handleButtonClick('Orders')}
+          selected={selectedButton === tabvalues.orders} 
+          onClick={() => handleButtonClick(tabvalues.orders)}
         >
           <ListItemIcon>
             <ShoppingCartIcon />
           </ListItemIcon>
-          <ListItemText primary="Orders" />
+          <ListItemText primary={tabvalues.orders} />
         </ListItemButton>
         <ListItemButton
-          selected={selectedButton === 'Customers'} // Apply selected styling if 'Customers' is selected
-          onClick={() => handleButtonClick('Customers')}
+          selected={selectedButton === tabvalues.customer} 
+          onClick={() => handleButtonClick(tabvalues.customer)}
         >
           <ListItemIcon>
             <PeopleIcon />
           </ListItemIcon>
-          <ListItemText primary="Customers" />
+          <ListItemText primary={tabvalues.customer}/>
         </ListItemButton>
         <ListItemButton
-          selected={selectedButton === 'Reports'} // Apply selected styling if 'Reports' is selected
-          onClick={() => handleButtonClick('Reports')}
+          selected={selectedButton === tabvalues.reports} 
+          onClick={() => handleButtonClick(tabvalues.reports)}
         >
           <ListItemIcon>
             <BarChartIcon />
           </ListItemIcon>
-          <ListItemText primary="Reports" />
+          <ListItemText primary={tabvalues.reports} />
         </ListItemButton>
         <ListItemButton
-          selected={selectedButton === 'Integrations'} // Apply selected styling if 'Integrations' is selected
-          onClick={() => handleButtonClick('Integrations')}
+          selected={selectedButton === tabvalues.integrations} 
+          onClick={() => handleButtonClick(tabvalues.integrations)}
         >
           <ListItemIcon>
             <LayersIcon />
           </ListItemIcon>
-          <ListItemText primary="Integrations" />
+          <ListItemText primary={tabvalues.integrations} />
         </ListItemButton>
       </List>
       {/* Rest of your component content here */}

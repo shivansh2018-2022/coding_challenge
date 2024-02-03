@@ -25,6 +25,9 @@ import {SecondaryListItems} from './secondarylistitems';
 import { useSelector } from 'react-redux'; // Import useSelector to get the selected view from Redux
 // import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import ReportPage from '../report/report';
+import Customers from '../customers/customers';
+import Integrations from '../integrations/integrations';
+import MyOrders from '../orders/orders';
 
 function Copyright(props) {
   return (
@@ -167,9 +170,11 @@ export default function Dashboard() {
         >
           <Toolbar />
           {/* Use conditional rendering based on selectedView */}
-          {selectedView === 'Reports' ? (
-            <ReportPage />
-          ) : (
+          {selectedView === 'Customers' && <Customers />}
+          {selectedView === 'Reports' && <ReportPage />}
+          {selectedView === 'Integrations' && <Integrations />}
+          {selectedView === 'Orders' && <MyOrders />}
+          {selectedView === 'Dashboard' && (
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
               {/* Chart */}
@@ -207,7 +212,7 @@ export default function Dashboard() {
             </Grid>
             <Copyright sx={{ pt: 4 }} />
           </Container>
-          )}
+            )}
         </Box>
       </Box>
     </ThemeProvider>

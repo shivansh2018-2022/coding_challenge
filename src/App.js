@@ -21,9 +21,6 @@ const App = () => {
           {/* Route for the Dashboard */}
           <Route path="/Dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/Login" />} />
 
-          {/* Route for the Report page */}
-          <Route path="/Report" element={isAuthenticated ? <ReportPage /> : <Navigate to="/Login" />} />
-
           {/* Default route (navigate to Login if no matching route) */}
           <Route path="*" element={<Navigate to="/Login" />} />
         </Routes>
