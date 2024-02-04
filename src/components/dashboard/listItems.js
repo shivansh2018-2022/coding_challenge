@@ -1,22 +1,16 @@
-import React, { useState } from 'react';
-import List from '@mui/material/List';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import PeopleIcon from '@mui/icons-material/People';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import LayersIcon from '@mui/icons-material/Layers';
-import AssignmentIcon from '@mui/icons-material/Assignment';
-import { useDispatch, useSelector } from 'react-redux'; 
-import { selectView } from '../../Services/Actions/actions';
-import { tabvalues } from '../../constants';
-
-
-//change reducer.js
-//reconcilation + diffing + hooks + dependence array + usecallback + redux + JWT authentication
-
+import React, { useState } from "react";
+import List from "@mui/material/List";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import PeopleIcon from "@mui/icons-material/People";
+import BarChartIcon from "@mui/icons-material/BarChart";
+import LayersIcon from "@mui/icons-material/Layers";
+import { useDispatch, useSelector } from "react-redux";
+import { selectView } from "../../Services/Actions/actions";
+import { tabvalues } from "../../constants";
 
 const YourComponent = () => {
   const dispatch = useDispatch();
@@ -31,7 +25,7 @@ const YourComponent = () => {
     <div>
       <List>
         <ListItemButton
-          selected={selectedButton === tabvalues.dashboard} 
+          selected={selectedButton === tabvalues.dashboard}
           onClick={() => handleButtonClick(tabvalues.dashboard)}
         >
           <ListItemIcon>
@@ -40,7 +34,7 @@ const YourComponent = () => {
           <ListItemText primary={tabvalues.dashboard} />
         </ListItemButton>
         <ListItemButton
-          selected={selectedButton === tabvalues.orders} 
+          selected={selectedButton === tabvalues.orders}
           onClick={() => handleButtonClick(tabvalues.orders)}
         >
           <ListItemIcon>
@@ -49,16 +43,16 @@ const YourComponent = () => {
           <ListItemText primary={tabvalues.orders} />
         </ListItemButton>
         <ListItemButton
-          selected={selectedButton === tabvalues.customer} 
+          selected={selectedButton === tabvalues.customer}
           onClick={() => handleButtonClick(tabvalues.customer)}
         >
           <ListItemIcon>
             <PeopleIcon />
           </ListItemIcon>
-          <ListItemText primary={tabvalues.customer}/>
+          <ListItemText primary={tabvalues.customer} />
         </ListItemButton>
         <ListItemButton
-          selected={selectedButton === tabvalues.reports} 
+          selected={selectedButton === tabvalues.reports}
           onClick={() => handleButtonClick(tabvalues.reports)}
         >
           <ListItemIcon>
@@ -67,7 +61,7 @@ const YourComponent = () => {
           <ListItemText primary={tabvalues.reports} />
         </ListItemButton>
         <ListItemButton
-          selected={selectedButton === tabvalues.integrations} 
+          selected={selectedButton === tabvalues.integrations}
           onClick={() => handleButtonClick(tabvalues.integrations)}
         >
           <ListItemIcon>
@@ -76,7 +70,6 @@ const YourComponent = () => {
           <ListItemText primary={tabvalues.integrations} />
         </ListItemButton>
       </List>
-      {/* Rest of your component content here */}
     </div>
   );
 };

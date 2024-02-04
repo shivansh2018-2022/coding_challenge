@@ -1,11 +1,11 @@
 // Reducer.js
-import { AUTHENTICATE_USER, SELECT_VIEW } from '../Actions/actions';
+import { AUTHENTICATE_USER, SELECT_VIEW } from "../Actions/actions";
 
 const initialState = {
   isAuthenticated: false,
   authorizationCode: null,
   username: null,
-  selectedView: 'Dashboard',
+  selectedView: "Dashboard",
 };
 
 const authReducer = (state = initialState, action) => {
@@ -17,7 +17,7 @@ const authReducer = (state = initialState, action) => {
         authorizationCode: action.payload.authorizationCode,
         username: action.payload.username,
       };
-      case SELECT_VIEW:
+    case SELECT_VIEW:
       return {
         ...state,
         selectedView: action.payload,
@@ -26,9 +26,5 @@ const authReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-
-
-
 
 export default authReducer;

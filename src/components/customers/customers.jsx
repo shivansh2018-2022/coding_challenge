@@ -1,12 +1,16 @@
-import React from 'react';
+import React from "react";
 
 const Customers = () => {
-    
-    return ( 
-        <div>
-            <p>customers list is loading...</p>
-        </div>
-     );
+  return (
+    <div
+      style={{
+        marginTop: "100px",
+        marginLeft: "500px",
+      }}
+    >
+      <p>customers list to be out soon...</p>
+    </div>
+  );
 };
 
 export default Customers;
