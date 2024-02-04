@@ -1,19 +1,13 @@
 // store.js
-import { configureStore } from '@reduxjs/toolkit';
-import authReducer from './Reducers/reducer';
+import { configureStore } from "@reduxjs/toolkit";
+import { authReducer } from "./Reducers/reducer";
+import { selectedTabReducer } from "./Reducers/reducer";
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
-     // Add more reducers if needed
+    tabvalue: selectedTabReducer,
   },
-  // Add middleware and other configuration options if needed
 });
 
 export default store;
-
-
-
-
-
-

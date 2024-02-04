@@ -99,7 +99,7 @@ export default function Dashboard() {
   const toggleDrawer = () => {
     setOpen(!open);
   };
-  const selectedView = useSelector((state) => state.auth.selectedView); // Get the selected view from Redux
+  const selectedView = useSelector((state) => state.tabvalue.selectedView); // Get the selected view from Redux
 
   return (
     <ThemeProvider theme={defaultTheme}>

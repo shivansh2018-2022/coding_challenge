@@ -33,36 +33,38 @@ const ReportPage = () => {
   const [chartData, setChartData] = useState();
 
   useEffect(() => {
-    // Fetch data using the Bearer token
-    const fetchReportData = () => {
-      fetch(
-        "https://tl4zomomo1.execute-api.ap-southeast-2.amazonaws.com/dev1/case-study-data ",
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${authorizationCode}`,
-          },
-        }
-      )
-        .then((response) => response.json())
-        .then((apiData) => {
-          // Transform apidata to chart data
-          const transformedData = monthNames.map((month, index) => ({
-            name: month,
-            revenue: apiData.data[0].values[index],
-            profit: apiData.data[1].values[index],
-          }));
-          setChartData(transformedData);
-        })
+    const fetchReportData = async () => {
+      try {
+        if (authorizationCode) {
+          const response = await fetch(
+            "https://tl4zomomo1.execute-api.ap-southeast-2.amazonaws.com/dev1/case-study-data",
+            {
+              method: "GET",
+              headers: {
+                Authorization: `Bearer ${authorizationCode}`,
+              },
+            }
+          );
 
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        });
+          if (response.ok) {
+            const apiData = await response.json();
+
+            const transformedData = monthNames.map((month, index) => ({
+              name: month,
+              revenue: apiData.data[0].values[index],
+              profit: apiData.data[1].values[index],
+            }));
+            setChartData(transformedData);
+          } else {
+            console.error("Error fetching data:", response.status);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
 
-    if (authorizationCode) {
-      fetchReportData();
-    }
+    fetchReportData();
   }, [authorizationCode]);
 
   return (

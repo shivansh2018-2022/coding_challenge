@@ -1,11 +1,12 @@
 // Reducer.js
 import { AUTHENTICATE_USER, SELECT_VIEW } from "../Actions/actions";
+import { tabvalues } from "../../constants";
 
 const initialState = {
   isAuthenticated: false,
   authorizationCode: null,
   username: null,
-  selectedView: "Dashboard",
+  selectedView: tabvalues.dashboard,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -17,6 +18,13 @@ const authReducer = (state = initialState, action) => {
         authorizationCode: action.payload.authorizationCode,
         username: action.payload.username,
       };
+    default:
+      return state;
+  }
+};
+
+const selectedTabReducer = (state = initialState, action) => {
+  switch (action.type) {
     case SELECT_VIEW:
       return {
         ...state,
@@ -27,4 +35,4 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
-export default authReducer;
+export { authReducer, selectedTabReducer };
